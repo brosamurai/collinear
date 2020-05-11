@@ -17,12 +17,13 @@ public class FastCollinearPoints {
 
 
     public FastCollinearPoints(Point[] points) {
+        validateConstructor(points);
         Point[] copyOfPoints = points.clone();
-        tempPointsHolder = new Point[points.length * 2];
+        tempPointsHolder = new Point[points.length * points.length];
 
         for (Point p : points) {
             // sort by natural order and then slope order
-            validateConstructor(copyOfPoints);
+            Arrays.sort(copyOfPoints);
             Arrays.sort(copyOfPoints, p.slopeOrder());
 
             // start with 1 because invoking point is included already
@@ -96,7 +97,8 @@ public class FastCollinearPoints {
     }
 
     public LineSegment[] segments() {
-        return lineSegments;
+        LineSegment[] immutable = lineSegments.clone();
+        return immutable;
     }
 
     public static void main(String[] args) {

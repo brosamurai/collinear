@@ -10,7 +10,6 @@
 
 import edu.princeton.cs.algs4.StdDraw;
 
-import java.util.Arrays;
 import java.util.Comparator;
 
 public class Point implements Comparable<Point> {
@@ -92,16 +91,16 @@ public class Point implements Comparable<Point> {
      * argument point
      */
     public int compareTo(Point that) {
-        if (this.x < that.x) {
+        if (this.y < that.y) {
             return -1;
         }
-        else if (this.x > that.x) {
+        else if (this.y > that.y) {
             return +1;
         }
         // if x values are the same
         else {
-            if (this.y > that.y) return +1;
-            else if (this.y < that.y) return -1;
+            if (this.x > that.x) return +1;
+            else if (this.x < that.x) return -1;
             else return 0;
         }
     }
@@ -117,7 +116,6 @@ public class Point implements Comparable<Point> {
         return new BySlope(this);
     }
 
-    // TODO: use Point.this rather than passing this through the constructor?
     private static class BySlope implements Comparator<Point> {
         private final Point current;
 
@@ -148,43 +146,5 @@ public class Point implements Comparable<Point> {
      * Unit tests the Point data type.
      */
     public static void main(String[] args) {
-        Point point1 = new Point(0, 3);
-        Point point2 = new Point(0, 2);
-        Point point3 = new Point(3, 1);
-        Point point4 = new Point(2, 1);
-        Point point5 = new Point(1, 1);
-        Point point6 = new Point(1, 1);
-        Point point7 = new Point(1, 1);
-        Point point8 = new Point(1, 1);
-        Point point9 = new Point(0, 2);
-        Point point10 = new Point(0, 2);
-        Point point11 = new Point(0, 2);
-
-        Point[] points = new Point[11];
-        points[0] = point1;
-        points[1] = point2;
-        points[2] = point3;
-        points[3] = point4;
-        points[4] = point5;
-        points[5] = point6;
-        points[6] = point7;
-        points[7] = point8;
-        points[8] = point9;
-        points[9] = point10;
-        points[10] = point11;
-
-
-        Arrays.sort(points);
-
-        // System.out.println("Before sort:");
-        // for (Point p : points) {
-        //     System.out.println(p.x + ", " + p.y);
-        // }
-        //
-        // System.out.println("After sort:");
-        // Arrays.sort(points, point1.slopeOrder());
-        // for (Point p : points) {
-        //     System.out.println(p.x + ", " + p.y);
-        // }
     }
 }
